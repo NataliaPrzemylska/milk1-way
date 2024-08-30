@@ -3,15 +3,19 @@ level_index = 1
 levels = {}
 levels[1] = { left_lvl=nil, right_lvl=2, mapX=0, mapY=0,
     spawn_left={x=10, y=20}, spawn_right={x=120, y=32},
-    quote="we had to leave\nthe house at dawn"}
+    quote="back in my days\nwe had to leave\nthe house at dawn"}
 
 levels[2] = { left_lvl=1, right_lvl=3, mapX=1, mapY=0,
-    spawn_left={x=1, y=64}, spawn_right={x=120, y=32},
-    quote="we had to walk uphill\nall the way"}
+    spawn_left={x=1, y=64}, spawn_right={x=120, y=16},
+    quote="back in my days\nwe had to walk uphill\nall the way"}
 
-levels[3] = { left_lvl=2, right_lvl=nil, mapX=1, mapY=0,
-    spawn_left={x=1, y=64}, spawn_right={x=120, y=32},
-    quote="the mountains were tall"}
+levels[3] = { left_lvl=2, right_lvl=4, mapX=1, mapY=0,
+    spawn_left={x=1, y=64}, spawn_right={x=120, y=16},
+    quote="and the hills\nwere *really* tall"}
+
+levels[4] = { left_lvl=3, right_lvl=nil, mapX=2, mapY=0,
+    spawn_left={x=1, y=64}, spawn_right=nil,
+    quote="but I finally found the cow"}
 
 mapX = levels[1].mapX
 mapY = levels[1].mapY
@@ -43,6 +47,5 @@ function draw_level()
     local fg = day and 8 or 7
     local bg = day and 15 or 0
     rect(7, 95, 121, 121, fg)
-    print('back in my days...', 9, 97, fg)
-    print(quote, 12, 103)
+    print(quote, 9, 97, fg)
 end
