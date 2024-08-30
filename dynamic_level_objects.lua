@@ -3,9 +3,9 @@ current_objects = {
 }
 
 car = {
-    x = 140
-    y = 112
-    spr = 33
+    x = 140,
+    y = 112,
+    spr = 33,
     draw = draw_car,
     day = true,
     spd = 10

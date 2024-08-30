@@ -5,9 +5,9 @@ function _init()
 end
 
 function _update()
-    for i in current_objects do
-        if i.spd != nil then
-            i.x += i.spd
+    for obj in all(current_objects) do
+        if obj.spd != nil then
+            obj.x += obj.spd
         end
     end
 end
@@ -21,12 +21,12 @@ function _draw()
     draw_player()
     player_input()
 
-    -- draw tiles in map
-    map(0, 0, 0, 0, 6, 2)
+    -- draw a screen of tiles in map
+    map(0, 0, 0, 0, 16, 16)
 
-    for i in current_objects do
-        if i.day == day then
-            i.draw(i)
+    for obj in all(current_objects) do
+        if obj.day == day then
+            obj.draw(obj)
         end
     end
 end
