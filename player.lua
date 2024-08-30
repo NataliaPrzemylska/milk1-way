@@ -57,6 +57,8 @@ function player_input()
         
         day_cooldown = 0.3
         day_button = 1
+
+        journey_days += 0.5
     end
 
     -- move player horizontally
