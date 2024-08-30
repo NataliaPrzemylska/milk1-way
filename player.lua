@@ -1,10 +1,13 @@
+GRAVITY = 5 -- down (positive Y), in px per second squared
 player = {
     x = 20, -- left edge, in px
     y = 10, -- top edge, in px
+    vy = 0, -- current velocity down, in px per second
     spr = 0,
     width = 6, -- in px
     height = 7, -- in px
-    spd = 15, -- in px per second
+    walk_spd = 30, -- side to side, in px per second
+    jump_spd = 2, -- up, in px per second
     face_right = true,
 }
 
@@ -21,7 +24,8 @@ function animate_player()
 end
 
 function draw_player()
-    spr(255, player.x, player.y, player.width / 8, player.height / 8, not player.face_right)
+    -- the sprite positions are always rounded down, adding 0.5 makes them round to nearest integer
+    spr(255, player.x + 0.5, player.y + 0.5, player.width / 8, player.height / 8, not player.face_right)
 end
 
 FLAG_BLOCK_PLATFORM = 0x1
@@ -65,10 +69,57 @@ function player_input()
     if input.move_x ~= 0 then
         local collision = player_collision(input.move_x, 0)
         if (collision & FLAG_BLOCK_ALL) == 0 then
-            player.x += input.move_x * player.spd * FRAME_TIME
+            player.x += input.move_x * player.walk_spd * FRAME_TIME
         end
 
         player.face_right = input.move_x > 0
+    end
+
+    -- move player vertically
+    local is_on_ground = player_grounded()
+    if not is_on_ground then
+        player.vy += GRAVITY * FRAME_TIME
+    elseif is_on_ground and player.vy > 0 then
+        -- set velocity to 0 if falling onto ground
+        player.vy = 0
+    end
+
+    if is_on_ground and input.jump then
+        player.vy = -player.jump_spd
+    end
+
+    if debug then
+        if is_on_ground then
+            print("ground", 0, 96)
+        else
+            print("air", 0, 96)
+        end
+        print("x", 0, 104)
+        print(player.x, 8, 104)
+        print("y", 0, 112)
+        print(player.y, 8, 112)
+        print("vy", 0, 120)
+        print(player.vy, 16, 120)
+    end
+
+    -- move in small steps to not end up inside wall
+    local move_y = 0
+    while abs(move_y) < abs(player.vy) do
+    	local step = 0.1 * sgn(player.vy)
+    	local stop = false
+    	if player.vy < 0 then
+    	    -- going up
+    	    stop = (player_collision(0, -1) & FLAG_BLOCK_ALL) ~= 0
+    	else
+    	    -- going down
+    	    stop = player_grounded()
+    	end
+    	if not stop then
+    	    player.y += step
+    	    move_y += step
+    	else
+    	    break
+    	end
     end
 
     -- process cooldowns
@@ -80,32 +131,37 @@ function player_input()
     old_input = input
 end
 
+function player_grounded()
+    local flags = player_collision(0, 1)
+    return (flags & (FLAG_BLOCK_ALL | FLAG_BLOCK_PLATFORM)) ~= 0
+end
+
 function player_collision(dir_x, dir_y)
-    OFFSET = 0.3
+    OFFSET = 0.1
     local point1 = {}
     local point2 = {}
     if dir_x ~= 0 then
         -- horizontal move
         point1.y = player.y
-        point2.y = player.y + player.height
+        point2.y = player.y + player.height - 1
         if dir_x < 0 then
             -- check left
             point1.x = player.x - OFFSET
         else
             -- check right
-            point1.x = player.x + (player.width - 1) + OFFSET
+            point1.x = player.x + player.width + OFFSET
         end
         point2.x = point1.x
     else
         -- vertical move
         point1.x = player.x
-        point2.x = player.x + player.width
+        point2.x = player.x + player.width - 1
         if dir_y < 0 then
             -- check up
             point1.y = player.y - OFFSET
         else
             -- check down
-            point1.y = player.y + (player.height - 1) + OFFSET
+            point1.y = player.y + player.height + OFFSET
         end
         point2.y = point1.y
     end

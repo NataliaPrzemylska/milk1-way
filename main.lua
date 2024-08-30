@@ -3,6 +3,7 @@
 function _init()
     day = true
     journey_days = 0
+    debug = false
 end
 
 function _update()
