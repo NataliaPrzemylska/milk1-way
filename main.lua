@@ -16,4 +16,7 @@ function _draw()
     end
     draw_player()
     player_input()
+
+    -- draw tiles in map
+    map(0, 0, 0, 0, 6, 2)
 end
