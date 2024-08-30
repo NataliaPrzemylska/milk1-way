@@ -24,7 +24,7 @@ function _draw()
     player_input()
 
     -- draw a screen of tiles in map
-    map(0, 0, 0, 0, 16, 16)
+    map(mapX*16, mapY*16, 0, 0, 16, 16)
 
     for obj in all(current_objects) do
         if obj.day == day then
