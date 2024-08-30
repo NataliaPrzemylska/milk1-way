@@ -15,3 +15,7 @@ function animate_player()
         player.sp = 0
     end
 end
+
+function draw_player()
+    spr(255, player.x, player.y)
+end

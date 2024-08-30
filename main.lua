@@ -4,10 +4,11 @@ function _init()
 
 end
 
-function _draw()
+function _update()
 
 end
 
-function _update()
-
+function _draw()
+    cls(0)
+    draw_player()
 end
