@@ -2,7 +2,7 @@ player = {
     x = 10,
     y = 10,
     sp = 0,
-    width = 7,
+    width = 6,
     height = 7,
 }
 
