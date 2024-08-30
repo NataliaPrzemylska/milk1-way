@@ -122,6 +122,13 @@ function player_input()
     	end
     end
 
+    -- handle level bounds
+    if player.x > 127 - (player.width) then
+        change_level(true)
+    elseif player.x < 1 then
+        change_level(false)
+    end
+
     -- process cooldowns
     if day_cooldown > 0 then
         day_cooldown -= FRAME_TIME

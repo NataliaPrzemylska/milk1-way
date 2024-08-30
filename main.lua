@@ -12,6 +12,7 @@ function _update()
             obj.x += obj.spd
         end
     end
+    player_input()
 end
 
 function _draw()
@@ -21,7 +22,6 @@ function _draw()
         cls(0)
     end
     draw_player()
-    player_input()
 
     -- draw a screen of tiles in map
     map(mapX*16, mapY*16, 0, 0, 16, 16)
