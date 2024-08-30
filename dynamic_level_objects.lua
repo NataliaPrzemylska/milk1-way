@@ -8,7 +8,9 @@ car = {
     spr = 33
     draw = draw_car,
     day = true,
-    spd = 10
+    spd = 10,
+    width = 16,
+    height = 7
 }
 
 function draw_car(c)
