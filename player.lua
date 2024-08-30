@@ -9,6 +9,7 @@ player = {
     walk_spd = 30, -- side to side, in px per second
     jump_spd = 2, -- up, in px per second
     face_right = true,
+    has_milk = false,
 }
 
 FRAME_TIME = 1 / 30.0 -- in seconds
@@ -26,6 +27,10 @@ end
 function draw_player()
     -- the sprite positions are always rounded down, adding 0.5 makes them round to nearest integer
     spr(255, player.x + 0.5, player.y + 0.5, player.width / 8, player.height / 8, not player.face_right)
+
+    if player.has_milk then
+        spr(251, player.x + 0.5, player.y + 0.5 - 9)
+    end
 end
 
 FLAG_BLOCK_PLATFORM = 0x1

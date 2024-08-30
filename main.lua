@@ -13,6 +13,7 @@ function _update()
         end
     end
     player_input()
+    update_level()
 end
 
 function _draw()
@@ -21,10 +22,11 @@ function _draw()
     else
         cls(0)
     end
-    draw_player()
 
     -- draw a screen of tiles in map
     map(mapX*16, mapY*16, 0, 0, 16, 16)
+
+    draw_player()
 
     for obj in all(current_objects) do
         if obj.day == day then

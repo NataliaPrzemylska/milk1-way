@@ -35,3 +35,14 @@ function player_collision(dir_x, dir_y)
     local flags = fget(sprite1) | fget(sprite2)
     return flags
 end
+
+function player_overlap(x, y, width, height)
+    if player.x < x + width and
+       player.x + player.width > x and
+       player.y < y + height and
+       player.y + player.height > y then
+        return true
+    else
+        return false
+    end
+end
