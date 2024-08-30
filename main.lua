@@ -5,7 +5,11 @@ function _init()
 end
 
 function _update()
-
+    for i in current_objects do
+        if i.spd != nil then
+            i.x += i.spd
+        end
+    end
 end
 
 function _draw()
@@ -16,4 +20,10 @@ function _draw()
     end
     draw_player()
     player_input()
+
+    for i in current_objects do
+        if i.day == day then
+            i.draw(i)
+        end
+    end
 end
