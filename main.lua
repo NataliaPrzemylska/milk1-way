@@ -31,4 +31,5 @@ function _draw()
             obj.draw(obj)
         end
     end
+    draw_level()
 end
