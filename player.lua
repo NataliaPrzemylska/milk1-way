@@ -160,10 +160,10 @@ end
 
 function dead()
     if player.has_milk then
-        player.x = levels[level_index].spawn_left.x
-        player.y = levels[level_index].spawn_left.y
-    else
         player.x = levels[level_index].spawn_right.x
         player.y = levels[level_index].spawn_right.y
+    else
+        player.x = levels[level_index].spawn_left.x
+        player.y = levels[level_index].spawn_left.y
     end
 end
