@@ -10,3 +10,4 @@ slavic game jam 2024
 
 - 0 0x1: blocks movement from above
 - 1 0x2: blocks movement from all sides
+- 2 0x4: day/night dependent
