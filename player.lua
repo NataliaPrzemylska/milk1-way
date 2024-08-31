@@ -10,9 +10,9 @@ player = {
     face_right = true,
     has_milk = false,
     has_key = false,
-
     current_sprite = 0,
     animation_index = 1,
+    dead_animation_index = 0,
 }
 
 ANIM = {
@@ -22,21 +22,36 @@ ANIM = {
     LEN = 6,
     air_up = 3,
     air_down = 4,
+    falling = 16,
+    laying = 17
 }
 
 FRAME_TIME = 1 / 30.0 -- in seconds
 day_cooldown = 0
 
 function animate_player(walking, in_air)
-    -- show the frame from correct animation
-    if in_air then
-        if walking then
-            player.current_sprite = player.vy < 0 and ANIM.air_up or ANIM.air_down
+    if player.dead_animation_index ~= 0 then
+        player.dead_animation_index+=1
+        if player.dead_animation_index < 10 then
+            player.current_sprite = ANIM.falling
+        elseif player.dead_animation_index == 60 then
+            player.current_sprite = ANIM.laying
+            player.dead_animation_index = 0
+            respawn()
         else
-            player.current_sprite = player.vy < 0 and 5 or 0
+            player.current_sprite = ANIM.laying
         end
     else
-        player.current_sprite = (walking and ANIM.walk or ANIM.idle)[flr(player.animation_index)]
+    -- show the frame from correct animation
+        if in_air then
+            if walking then
+                player.current_sprite = player.vy < 0 and ANIM.air_up or ANIM.air_down
+            else
+                player.current_sprite = player.vy < 0 and 5 or 0
+            end
+        else
+            player.current_sprite = (walking and ANIM.walk or ANIM.idle)[flr(player.animation_index)]
+        end 
     end
 
 
@@ -83,8 +98,9 @@ function player_input()
         end
     end
 
-    -- move player horizontally
-    if input.move_x ~= 0 then
+
+    -- move player horizontally (if the player isn't dead)
+    if input.move_x ~= 0 and player.dead_animation_index == 0 then
         local collision = player_collision(input.move_x, 0)
         if (collision & FLAG_BLOCK_ALL) == 0 then
             player.x += input.move_x * player.walk_spd * FRAME_TIME
@@ -102,7 +118,7 @@ function player_input()
         player.vy = 0
     end
 
-    if is_on_ground and input.jump then
+    if is_on_ground and input.jump and player.dead_animation_index == 0 then -- if the player isn't dead
         player.vy = -player.jump_spd
     end
 
@@ -164,12 +180,18 @@ function player_grounded()
 end
 
 
-function dead()
+function respawn()
     if player.has_milk then
         player.x = levels[level_index].spawn_right.x
         player.y = levels[level_index].spawn_right.y
     else
         player.x = levels[level_index].spawn_left.x
         player.y = levels[level_index].spawn_left.y
+    end
+    
+end
+function dead()
+    if player.dead_animation_index==0 then
+        player.dead_animation_index = 1
     end
 end

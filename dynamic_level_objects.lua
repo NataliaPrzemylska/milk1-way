@@ -1,11 +1,15 @@
 
 function update_car(c)
+    if (player.x<=c.x+16 and player.x>=c.x-8) and (player.y<=c.y+8 and player.y>=c.y-8) then
+        dead()
+    end
     if c.spd != nil then
         if c.x*(c.spd > 0 and 1 or -1)>c.destination_x  then
             c.x=c.spawn_x
         end
             c.x += c.spd
     end
+
 end
 
 function draw_car(c)
