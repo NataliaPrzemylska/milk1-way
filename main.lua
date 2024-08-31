@@ -12,8 +12,8 @@ end
 
 function _update()
     for obj in all(current_objects) do
-        if obj.spd != nil then
-            obj.x += obj.spd
+        if day == obj.day then
+            obj.update(obj);
         end
     end
     player_input()
@@ -44,15 +44,16 @@ function _draw()
         end
     end
     
+    
 
     --debug
-    print(player.x,10,0)
-    print(player.y)
-    print(player.has_milk)
-    print(adjust)
-    print("-----")
-    print(mapX)
-    print(mapY)
-    print(temp_mapx)
-    print(temp_mapy)
+    --print(player.x,10,0)
+    --print(player.y)
+    --print(player.has_milk)
+    print(adjust, 10,0)
+    --print("-----")
+    --print(mapX)
+    --print(mapY)
+    --print(temp_mapx)
+    --print(temp_mapy)
 end

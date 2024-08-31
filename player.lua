@@ -17,7 +17,7 @@ player = {
 ANIM = {
     -- repeat the animations to have the same lenght for simplicity
     walk = {0, 1, 2, 0, 1, 2},
-    idle = {0, 5, 0, 5, 0, 5},
+    idle = {0, 0, 0, 5, 5, 5},
     LEN = 6,
     air_up = 3,
     air_down = 4,
@@ -27,12 +27,17 @@ FRAME_TIME = 1 / 30.0 -- in seconds
 day_cooldown = 0
 
 function animate_player(walking, in_air)
+    -- show the frame from correct animation
     if in_air then
-        player.current_sprite = player.vy < 0 and ANIM.air_up or ANIM.air_down
+        if walking then
+            player.current_sprite = player.vy < 0 and ANIM.air_up or ANIM.air_down
+        else
+            player.current_sprite = player.vy < 0 and 5 or 0
+        end
+    else
+        player.current_sprite = (walking and ANIM.walk or ANIM.idle)[flr(player.animation_index)]
     end
 
-    -- show the frame from correct animation
-    player.current_sprite = (walking and ANIM.walk or ANIM.idle)[flr(player.animation_index)]
 
     -- move the counter forward and loop it
     local animation_speed = walking and 0.5 or 0.125
