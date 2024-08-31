@@ -24,6 +24,7 @@ function _draw()
         cls(0)
     end
 
+    draw_level()
     draw_background()
     -- draw a screen of tiles in map
     map(mapX*16, mapY*16, 0, 0, 16, 16)
@@ -35,5 +36,10 @@ function _draw()
             obj.draw(obj)
         end
     end
-    draw_level()
+    
+
+    --debug
+    print(player.x,10,0)
+    print(player.y,10,10)
+    print(player.has_milk)
 end
