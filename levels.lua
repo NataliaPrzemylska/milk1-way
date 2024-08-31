@@ -57,6 +57,11 @@ function get_milk()
     levels[4].left_lvl = 5
 
     --mset(8, 3, 66)
+
+    --unlock secret level
+    fset(101,3, true)
+    fset(101,1, false)
+    fset(101,2, false)
 end
 
 function draw_level()
