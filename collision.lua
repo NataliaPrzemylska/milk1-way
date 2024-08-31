@@ -32,6 +32,10 @@ function player_collision(dir_x, dir_y)
     -- bitwise OR flags to get all that appear on either point
     local sprite1 = mget(mapX*16 + flr(point1.x / 8), mapY*16 + flr(point1.y / 8))
     local sprite2 = mget(mapX*16 + flr(point2.x / 8), mapY*16 + flr(point2.y / 8))
+
+    check_sprite(sprite1, mapX*16 + flr(point1.x / 8), mapY*16 + flr(point1.y / 8))
+    check_sprite(sprite2, mapX*16 + flr(point2.x / 8), mapY*16 + flr(point2.y / 8))
+    
     local flags = fget(sprite1) | fget(sprite2)
     return flags
 end
