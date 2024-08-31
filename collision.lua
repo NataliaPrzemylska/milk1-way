@@ -52,8 +52,12 @@ function player_overlap(x, y, width, height)
 end
 
 function check_sprite(s, sx, sy)
+    if s == 35 then -- mine
 
-    if s == 133 or s == 148 then --key
+    elseif s == 40 or s == 41 then --orc
+        dead()
+        
+    elseif s == 133 or s == 148 then --key
         mset(sx, sy, 254)
         player.has_key = true
 

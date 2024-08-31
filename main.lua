@@ -23,8 +23,8 @@ function _update()
         dead()
     end
 end
-
 function _draw()
+    adjust_platforms()
     adjust_platforms()
     if day then
         cls(15)
