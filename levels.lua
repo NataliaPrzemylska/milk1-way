@@ -107,13 +107,17 @@ function set_day(day_now)
     if day_now then
         pal(8,8)
         pal(9,9)
+        pal(6,6)
         pal(3,8)
         pal(11,9)
+        pal(5,6)
     else
         pal(3,3)
         pal(11,11)
+        pal(5,5)
         pal(8,3)
         pal(9,11)
+        pal(6,5)
     end
 end
 
