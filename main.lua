@@ -7,6 +7,7 @@ function _init()
     debug = false
     temp_mapx = mapX
     temp_mapy = mapY
+    exploded = 0
 end
 
 function _update()
@@ -23,6 +24,7 @@ function _update()
     end
 end
 function _draw()
+    adjust_platforms()
     adjust_platforms()
     if day then
         cls(15)
@@ -49,7 +51,8 @@ function _draw()
     
 
     --debug
-    --print(sigma,0,0)
-    --print(player.y)
-    
+    print(player.x,10,0)
+    print(player.y)
+    print(#current_objects)
+    print(exploded)
 end
