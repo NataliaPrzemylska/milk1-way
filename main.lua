@@ -12,8 +12,8 @@ end
 
 function _update()
     for obj in all(current_objects) do
-        if obj.spd != nil then
-            obj.x += obj.spd
+        if day == obj.day then
+            obj.update(obj);
         end
     end
     player_input()

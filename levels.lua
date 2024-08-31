@@ -7,7 +7,8 @@ levels[1] = { left_lvl=nil, right_lvl=2, mapX=0, mapY=0,
 
 levels[2] = { left_lvl=1, right_lvl=3, mapX=1, mapY=0,
     spawn_left={x=1, y=40}, spawn_right={x=120, y=80},
-    quote="back in my days\nwe had to walk uphill\nall the way"}
+    quote="back in my days\nwe had to wait until\nnighttime to cross the road\n(press x)",
+    dynamic_objects={car}}
 
 levels[3] = { left_lvl=2, right_lvl=4, mapX=2, mapY=0,
     spawn_left={x=1, y=80}, spawn_right={x=120, y=16},
@@ -54,6 +55,8 @@ function change_level(right)
     player.y = spawn.y
 
     adjust_platforms()
+
+    spawn_dynamic_objects()
 end
 
 -- reconfigure the game for >>>comeback<<<
@@ -92,6 +95,16 @@ function adjust_platforms()
     end
 
     adjust += 1
+end
+function spawn_dynamic_objects()
+    for i in pairs (current_objects) do
+        current_objects [i] = nil
+    end
+    if levels[level_index].dynamic_objects ~= nil then
+        for index, value in ipairs(levels[level_index].dynamic_objects) do
+            current_objects[index] = value
+        end
+    end
 end
 
 function draw_level()
