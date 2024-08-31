@@ -23,8 +23,12 @@ levels[5] = { left_lvl=6, right_lvl=nil, mapX=4, mapY=0,
     spawn_left={x=1, y=80}, spawn_right={x=118, y=16},
     quote="and the hills\nwere *really* tall"}
 
-levels[6] = { left_lvl=6, right_lvl=nil, mapX=5, mapY=0,
-    spawn_left={x=1, y=80}, spawn_right={x=118, y=80},
+levels[6] = { left_lvl=7, right_lvl=5, mapX=5, mapY=0,
+    spawn_left={x=1, y=30}, spawn_right={x=118, y=80},
+    quote="and the hills\nwere *really* tall"}
+
+levels[7] = { left_lvl=8, right_lvl=6, mapX=6, mapY=0,
+    spawn_left={x=1, y=80}, spawn_right={x=118, y=30},
     quote="and the hills\nwere *really* tall"}
 
 mapX = levels[1].mapX
@@ -79,8 +83,6 @@ end
 
 function adjust_platforms()
     --Changing day/night dependent objects
-    temp_mapx = mapX
-    temp_mapy = mapY
     for i=16*mapX, 16*mapX+16 do
         for j=16*mapY, 16*mapY+16 do
             local map_tile = mget(i,j)
@@ -93,8 +95,6 @@ function adjust_platforms()
             end
         end
     end
-
-    adjust += 1
 end
 function spawn_dynamic_objects()
     for i in pairs (current_objects) do
