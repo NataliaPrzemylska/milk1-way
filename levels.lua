@@ -81,6 +81,20 @@ function update_level()
             set_day(day)
             changed_day = true
             sun_position = 0
+
+            --Changing day/night dependent objects
+            for i=16*mapX, 16*mapX+16 do
+                for j=16*mapY, 16*mapY+16 do
+                    local map_tile = mget(i,j)
+                    if fget(map_tile, 2) then
+                        if map_tile % 2 == 0 then
+                            mset(i,j,map_tile+1)
+                        else
+                            mset(i,j,map_tile-1)
+                        end
+                    end
+                end
+            end
         elseif changed_day and sun_position >= stop_position then
             changing_now = false
         end
