@@ -46,6 +46,7 @@ function change_level(right)
     player.y = spawn.y
 end
 
+-- reconfigure the game for >>>comeback<<<
 function get_milk()
     player.has_milk = true
 
@@ -53,7 +54,9 @@ function get_milk()
     levels[1].quote = "and this is how I got\nthe fresh milk for us"
     quote = levels[level_index].quote
 
-    mset(8, 3, 253)
+    levels[4].left_lvl = 1
+
+    mset(8, 3, 66)
 end
 
 function draw_level()

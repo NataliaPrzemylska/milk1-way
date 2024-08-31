@@ -3,30 +3,50 @@ player = {
     x = 20, -- left edge, in px
     y = 10, -- top edge, in px
     vy = 0, -- current velocity down, in px per second
-    spr = 0,
     width = 6, -- in px
     height = 7, -- in px
     walk_spd = 30, -- side to side, in px per second
     jump_spd = 2, -- up, in px per second
     face_right = true,
     has_milk = false,
+
+    current_sprite = 0,
+    animation_index = 1,
+}
+
+ANIM = {
+    -- repeat the animations to have the same lenght for simplicity
+    walk = {0, 1, 2, 0, 1, 2},
+    idle = {0, 5, 0, 5, 0, 5},
+    LEN = 6,
+    air_up = 3,
+    air_down = 4,
 }
 
 FRAME_TIME = 1 / 30.0 -- in seconds
-animation_speed = 0.5
 day_cooldown = 0
 
-function animate_player()
-    if player.sp <= 2 then
-        player.sp += animation_speed
-    else
-        player.sp = 0
+function animate_player(walking, in_air)
+    if in_air then
+        player.current_sprite = player.vy < 0 and ANIM.air_up or ANIM.air_down
+    end
+
+    -- show the frame from correct animation
+    player.current_sprite = (walking and ANIM.walk or ANIM.idle)[flr(player.animation_index)]
+
+    -- move the counter forward and loop it
+    local animation_speed = walking and 0.5 or 0.125
+    player.animation_index += animation_speed
+    if flr(player.animation_index) >= ANIM.LEN + 1 then
+        player.animation_index -= ANIM.LEN
     end
 end
 
 function draw_player()
+    local height_change = 1
     -- the sprite positions are always rounded down, adding 0.5 makes them round to nearest integer
-    spr(255, player.x + 0.5, player.y + 0.5, player.width / 8, player.height / 8, not player.face_right)
+    spr(player.current_sprite, player.x + 0.5, player.y + 0.5 - height_change,
+        player.width / 8, (player.height + height_change) / 8, not player.face_right)
 
     if player.has_milk then
         spr(251, player.x + 0.5, player.y + 0.5 - 9)
@@ -52,17 +72,7 @@ function player_input()
     -- flip day and night
     if input.flip and (not old_input.flip) and day_cooldown <= 0 then
         day = not day
-        if day then
-            pal(8,8)
-            pal(9,9)
-            pal(3,8)
-            pal(11,9)
-        else
-            pal(3,3)
-            pal(11,11)
-            pal(8,3)
-            pal(9,11)
-        end
+        set_day(day)
         
         day_cooldown = 0.3
         day_button = 1
@@ -107,6 +117,8 @@ function player_input()
         print(player.vy, 16, 120)
     end
 
+    animate_player(input.move_x ~= 0, not is_on_ground)
+
     -- move in small steps to not end up inside wall
     local move_y = 0
     while abs(move_y) < abs(player.vy) do
@@ -141,6 +153,20 @@ function player_input()
 
     -- save values for next frame
     old_input = input
+end
+
+function set_day(day_now)
+    if day_now then
+        pal(8,8)
+        pal(9,9)
+        pal(3,8)
+        pal(11,9)
+    else
+        pal(3,3)
+        pal(11,11)
+        pal(8,3)
+        pal(9,11)
+    end
 end
 
 function player_grounded()
