@@ -46,7 +46,7 @@ function _draw()
     
 
     --debug
-    print(player.x,10,0)
+    --[[print(player.x,10,0)
     print(player.y)
     print(player.has_milk)
     print(adjust)
@@ -54,5 +54,5 @@ function _draw()
     print(mapX)
     print(mapY)
     print(temp_mapx)
-    print(temp_mapy)
+    print(temp_mapy)]]--
 end
