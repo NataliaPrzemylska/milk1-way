@@ -5,7 +5,6 @@ function _init()
     set_day(day)
     journey_days = 0
     debug = false
-    adjust = 0
     temp_mapx = mapX
     temp_mapy = mapY
 end
@@ -50,13 +49,7 @@ function _draw()
     
 
     --debug
-    --[[print(player.x,10,0)
+    print(player.x,10,0)
     print(player.y)
-    print(player.has_milk)
-    print(adjust)
-    print("-----")
-    print(mapX)
-    print(mapY)
-    print(temp_mapx)
-    print(temp_mapy)]]--
+    
 end
