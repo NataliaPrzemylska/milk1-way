@@ -156,3 +156,14 @@ function player_grounded()
     local flags = player_collision(0, 1)
     return (flags & (FLAG_BLOCK_ALL | FLAG_BLOCK_PLATFORM)) ~= 0
 end
+
+
+function dead()
+    if player.has_milk then
+        player.x = levels[level_index].spawn_left.x
+        player.y = levels[level_index].spawn_left.y
+    else
+        player.x = levels[level_index].spawn_right.x
+        player.y = levels[level_index].spawn_right.y
+    end
+end

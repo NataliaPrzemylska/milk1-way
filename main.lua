@@ -18,6 +18,10 @@ function _update()
     end
     player_input()
     update_level()
+
+    if player.y > 130 then
+        dead()
+    end
 end
 
 function _draw()

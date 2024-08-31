@@ -18,8 +18,8 @@ levels[4] = { left_lvl=3, right_lvl=nil , mapX=3, mapY=0,
     quote="but I finally found the cow",
     cow_location={x=64, y=49, width=8, height=8}}
 
-levels[5] = { left_lvl=6, right_lvl=nil, mapX=2, mapY=0,
-    spawn_left={x=1, y=80}, spawn_right={x=120, y=16},
+levels[5] = { left_lvl=6, right_lvl=nil, mapX=4, mapY=0,
+    spawn_left={x=1, y=80}, spawn_right={x=118, y=16},
     quote="and the hills\nwere *really* tall"}
 
 mapX = levels[1].mapX
