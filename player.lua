@@ -1,12 +1,12 @@
 GRAVITY = 5 -- down (positive Y), in px per second squared
 player = {
-    x = 20, -- left edge, in px
-    y = 10, -- top edge, in px
+    x = 40, -- left edge, in px
+    y = 80, -- top edge, in px
     vy = 0, -- current velocity down, in px per second
     width = 6, -- in px
     height = 7, -- in px
     walk_spd = 30, -- side to side, in px per second
-    jump_spd = 2, -- up, in px per second
+    jump_spd = 2.5, -- up, in px per second
     face_right = true,
     has_milk = false,
 
@@ -49,7 +49,7 @@ function draw_player()
         player.width / 8, (player.height + height_change) / 8, not player.face_right)
 
     if player.has_milk then
-        spr(251, player.x + 0.5, player.y + 0.5 - 10)
+        spr(8, player.x + 0.5, player.y + 0.5 - 10)
     end
 end
 
