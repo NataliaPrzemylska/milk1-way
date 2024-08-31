@@ -73,6 +73,7 @@ function player_input()
     if input.flip and (not old_input.flip) then
         if start_day_change() then
             journey_days += 0.5
+            adjust_platforms()
         end
     end
 

@@ -18,6 +18,10 @@ levels[4] = { left_lvl=3, right_lvl=nil , mapX=3, mapY=0,
     quote="but I finally found the cow",
     cow_location={x=64, y=49, width=8, height=8}}
 
+levels[5] = { left_lvl=6, right_lvl=nil, mapX=2, mapY=0,
+    spawn_left={x=1, y=80}, spawn_right={x=120, y=16},
+    quote="and the hills\nwere *really* tall"}
+
 mapX = levels[1].mapX
 mapY = levels[1].mapY
 quote = levels[1].quote
@@ -44,6 +48,8 @@ function change_level(right)
     end
     player.x = spawn.x
     player.y = spawn.y
+
+    adjust_platforms()
 end
 
 -- reconfigure the game for >>>comeback<<<
@@ -62,6 +68,26 @@ function get_milk()
     fset(101,3, true)
     fset(101,1, false)
     fset(101,2, false)
+end
+
+function adjust_platforms()
+    --Changing day/night dependent objects
+    temp_mapx = mapX
+    temp_mapy = mapY
+    for i=16*mapX, 16*mapX+16 do
+        for j=16*mapY, 16*mapY+16 do
+            local map_tile = mget(i,j)
+            if fget(map_tile, 2) then
+                if map_tile % 2 == 0 and day then
+                    mset(i,j,map_tile+1)
+                elseif map_tile % 2 != 0 and not day then
+                    mset(i,j,map_tile-1)
+                end
+            end
+        end
+    end
+
+    adjust += 1
 end
 
 function draw_level()
@@ -87,19 +113,7 @@ function update_level()
             changed_day = true
             sun_position = 0
 
-            --Changing day/night dependent objects
-            for i=16*mapX, 16*mapX+16 do
-                for j=16*mapY, 16*mapY+16 do
-                    local map_tile = mget(i,j)
-                    if fget(map_tile, 2) then
-                        if map_tile % 2 == 0 then
-                            mset(i,j,map_tile+1)
-                        else
-                            mset(i,j,map_tile-1)
-                        end
-                    end
-                end
-            end
+            
         elseif changed_day and sun_position >= stop_position then
             changing_now = false
         end
