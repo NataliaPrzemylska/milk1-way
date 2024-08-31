@@ -2,21 +2,21 @@ level_index = 1
 
 levels = {}
 levels[1] = { left_lvl=nil, right_lvl=2, mapX=0, mapY=0,
-    spawn_left={x=10, y=20}, spawn_right={x=120, y=32},
+    spawn_left={x=10, y=20}, spawn_right={x=120, y=40},
     quote="back in my days\nwe had to leave\nthe house at dawn"}
 
 levels[2] = { left_lvl=1, right_lvl=3, mapX=1, mapY=0,
-    spawn_left={x=1, y=64}, spawn_right={x=120, y=16},
+    spawn_left={x=1, y=40}, spawn_right={x=120, y=80},
     quote="back in my days\nwe had to walk uphill\nall the way"}
 
-levels[3] = { left_lvl=2, right_lvl=4, mapX=1, mapY=0,
-    spawn_left={x=1, y=64}, spawn_right={x=120, y=16},
+levels[3] = { left_lvl=2, right_lvl=4, mapX=2, mapY=0,
+    spawn_left={x=1, y=80}, spawn_right={x=120, y=16},
     quote="and the hills\nwere *really* tall"}
 
-levels[4] = { left_lvl=3, right_lvl=nil, mapX=2, mapY=0,
-    spawn_left={x=1, y=64}, spawn_right=nil,
+levels[4] = { left_lvl=3, right_lvl=nil , mapX=3, mapY=0,
+    spawn_left={x=1, y=16}, spawn_right=nil,
     quote="but I finally found the cow",
-    cow_location={x=64, y=32, width=8, height=8}}
+    cow_location={x=64, y=49, width=8, height=8}}
 
 mapX = levels[1].mapX
 mapY = levels[1].mapY
@@ -54,9 +54,9 @@ function get_milk()
     levels[1].quote = "and this is how i got\nthe fresh milk for us"
     quote = levels[level_index].quote
 
-    levels[4].left_lvl = 1
+    levels[4].left_lvl = 5
 
-    mset(8, 3, 66)
+    --mset(8, 3, 66)
 end
 
 function draw_level()
@@ -124,5 +124,5 @@ function draw_background()
     local x = sun_position * (128 - width)
     local y = 32 * (1 + sin(sun_position / 2))
 
-    spr(day and 84 or 82, x, y, width / 8, height / 8)
+    spr(day and 130 or 128, x, y, width / 8, height / 8)
 end
