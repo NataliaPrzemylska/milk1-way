@@ -9,6 +9,7 @@ player = {
     jump_spd = 2.5, -- up, in px per second
     face_right = true,
     has_milk = false,
+    has_key = false,
 
     current_sprite = 0,
     animation_index = 1,

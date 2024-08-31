@@ -43,6 +43,10 @@ function _draw()
             obj.draw(obj)
         end
     end
+
+    if player.has_key then
+        spr(133, 110, 5)
+    end
     
 
     --debug

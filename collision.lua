@@ -46,3 +46,19 @@ function player_overlap(x, y, width, height)
         return false
     end
 end
+
+function check_sprite(s, sx, sy)
+    if s == 35 then -- mine
+        
+    elseif s == 133 or s = 148 then --key
+        mset(sx, sy, 254)
+        player.has_key = true
+
+    elseif s == 150 then --door
+        mset(sx,sy,134)
+        player.has_key = false
+
+    elseif s == 161 or s == 163 or s == 176 or s == 178 then --spikes
+        dead()
+    end
+end
