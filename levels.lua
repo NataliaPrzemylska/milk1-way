@@ -22,6 +22,10 @@ levels[5] = { left_lvl=6, right_lvl=nil, mapX=4, mapY=0,
     spawn_left={x=1, y=80}, spawn_right={x=118, y=16},
     quote="and the hills\nwere *really* tall"}
 
+levels[6] = { left_lvl=6, right_lvl=nil, mapX=5, mapY=0,
+    spawn_left={x=1, y=80}, spawn_right={x=118, y=80},
+    quote="and the hills\nwere *really* tall"}
+
 mapX = levels[1].mapX
 mapY = levels[1].mapY
 quote = levels[1].quote
