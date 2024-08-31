@@ -51,7 +51,7 @@ function get_milk()
     player.has_milk = true
 
     levels[4].quote = "back in my days\nwe milked the cows ourselves"
-    levels[1].quote = "and this is how I got\nthe fresh milk for us"
+    levels[1].quote = "and this is how i got\nthe fresh milk for us"
     quote = levels[level_index].quote
 
     levels[4].left_lvl = 1
@@ -73,4 +73,56 @@ function update_level()
             get_milk()
         end
     end
+
+    if changing_now then
+        sun_position += FRAME_TIME / change_time
+        if sun_position >= 1 then
+            day = not day
+            set_day(day)
+            changed_day = true
+            sun_position = 0
+        elseif changed_day and sun_position >= stop_position then
+            changing_now = false
+        end
+    end
+end
+
+changing_now = false
+changed_day = false
+stop_position = 0.75 -- part of day
+sun_position = stop_position
+change_time = 2.0 -- in seconds
+function start_day_change()
+    if changing_now then
+        return false
+    end
+
+    changed_day = false
+    changing_now = true
+
+    return true
+end
+
+function set_day(day_now)
+    if day_now then
+        pal(8,8)
+        pal(9,9)
+        pal(3,8)
+        pal(11,9)
+    else
+        pal(3,3)
+        pal(11,11)
+        pal(8,3)
+        pal(9,11)
+    end
+end
+
+function draw_background()
+    local width = 16
+    local height = 16
+    -- pico has inverted sin output
+    local x = sun_position * (128 - width)
+    local y = 32 * (1 + sin(sun_position / 2))
+
+    spr(day and 84 or 82, x, y, width / 8, height / 8)
 end

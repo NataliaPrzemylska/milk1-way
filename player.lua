@@ -49,7 +49,7 @@ function draw_player()
         player.width / 8, (player.height + height_change) / 8, not player.face_right)
 
     if player.has_milk then
-        spr(251, player.x + 0.5, player.y + 0.5 - 9)
+        spr(251, player.x + 0.5, player.y + 0.5 - 10)
     end
 end
 
@@ -70,14 +70,10 @@ function player_input()
     input.flip = btn(5)
 
     -- flip day and night
-    if input.flip and (not old_input.flip) and day_cooldown <= 0 then
-        day = not day
-        set_day(day)
-        
-        day_cooldown = 0.3
-        day_button = 1
-
-        journey_days += 0.5
+    if input.flip and (not old_input.flip) then
+        if start_day_change() then
+            journey_days += 0.5
+        end
     end
 
     -- move player horizontally
@@ -153,20 +149,6 @@ function player_input()
 
     -- save values for next frame
     old_input = input
-end
-
-function set_day(day_now)
-    if day_now then
-        pal(8,8)
-        pal(9,9)
-        pal(3,8)
-        pal(11,9)
-    else
-        pal(3,3)
-        pal(11,11)
-        pal(8,3)
-        pal(9,11)
-    end
 end
 
 function player_grounded()

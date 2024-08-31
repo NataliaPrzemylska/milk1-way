@@ -24,6 +24,7 @@ function _draw()
         cls(0)
     end
 
+    draw_background()
     -- draw a screen of tiles in map
     map(mapX*16, mapY*16, 0, 0, 16, 16)
 
