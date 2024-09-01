@@ -39,21 +39,15 @@ levels[9] = { left_lvl=1, right_lvl=8, mapX=0, mapY=1,
     spawn_left={x=1, y=80}, spawn_right={x=118, y=16},
     quote="and the hills\nwere *really* tall"}
 
-if state == STATE_MENU then
-    mapX = 7
-    mapY = 1
-else
-    mapX = levels[1].mapX
-    mapY = levels[1].mapY
-end
-
-mapX = levels[1].mapX
-mapY = levels[1].mapY
 quote = levels[1].quote
 cow_location = nil
 
-function change_level(right)
+function change_level(right) 
     local old_level_info = levels[level_index]
+    if (right==false) and (old_level_info.left_lvl==1) then
+        state = STATE_DIALOGUE_END
+        return
+    end
     if right then
         level_index = old_level_info.right_lvl
     else
@@ -71,8 +65,13 @@ function change_level(right)
     else
         spawn = level_info.spawn_right
     end
-    player.x = spawn.x
-    player.y = spawn.y
+    if spawn == nil then
+        player.x = 10
+        player.y = 30
+    else
+        player.x = spawn.x
+        player.y = spawn.y
+    end
 
     adjust_platforms()
 
@@ -83,7 +82,7 @@ end
 function get_milk()
     player.has_milk = true
 
-    levels[1].spawn_right = 9
+    levels[1].spawn_right = 5
 
     levels[4].quote = "back in my days\nwe milked the cows ourselves"
     levels[1].quote = "and this is how i got\nthe fresh milk for us"
