@@ -1,4 +1,4 @@
---Milk Journey
+--Milkiway
 
 function _init()
     day = true
