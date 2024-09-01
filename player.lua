@@ -204,6 +204,7 @@ end
 function dead()
     if player.dead_animation_index==0 then
         sfx_death()
+        screen_shake_offset = 0.55
         if epic_animation_frame == 0 then
             epic_animation_frame = 1
         end

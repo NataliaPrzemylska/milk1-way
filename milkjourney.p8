@@ -6,6 +6,7 @@ __lua__
 #include player.lua
 #include levels.lua
 #include effects_dialogue.lua
+#include visual_effects.lua
 #include musicman.lua
 #include main.lua
 __gfx__

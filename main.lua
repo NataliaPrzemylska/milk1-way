@@ -54,6 +54,7 @@ function _update()
     elseif state == STATE_DIALOGUE_END then
         update_final_dialogue()
     elseif state == STATE_GAME then
+        screen_shake()
         if stat(46) < 0 and stat(48) < 0 then
             if level_index != 4  then
                 if day then
