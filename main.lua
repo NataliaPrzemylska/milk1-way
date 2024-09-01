@@ -32,7 +32,8 @@ function _update()
 end
 function _draw()
     if state == "menu" then
-
+        cls(0)
+        print("press z to start")
     elseif state == "game" then
         adjust_platforms()
         if day then
