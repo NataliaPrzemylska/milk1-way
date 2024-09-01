@@ -52,8 +52,8 @@ function player_overlap(x, y, width, height)
 end
 
 function check_sprite(s, sx, sy)
-    if s == 35 then -- mine
-
+    if s == 34 then -- hole
+        --dead()
     elseif s >= 39 and s <= 44 then --orc
         dead()
         
