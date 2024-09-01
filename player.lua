@@ -1,6 +1,6 @@
 GRAVITY = 5 -- down (positive Y), in px per second squared
 player = {
-    x = 40, -- left edge, in px
+    x = 60, -- left edge, in px
     y = 80, -- top edge, in px
     vy = 0, -- current velocity down, in px per second
     width = 6, -- in px

@@ -2,7 +2,7 @@ level_index = 1
 
 levels = {}
 levels[1] = { left_lvl=nil, right_lvl=2, mapX=0, mapY=0,
-    spawn_left={x=10, y=20}, spawn_right={x=120, y=40},
+    spawn_left={x=100, y=20}, spawn_right={x=120, y=40},
     quote="back in my days\nwe had to leave\nthe house at dawn"}
 
 levels[2] = { left_lvl=1, right_lvl=3, mapX=1, mapY=0,
@@ -126,10 +126,10 @@ function spawn_dynamic_objects()
 end
 
 function draw_level()
-    local fg = day and 8 or 7
-    local bg = day and 15 or 0
-    rect(7, 95, 121, 121, fg)
-    print(quote, 9, 97, fg)
+    local fg = 7
+    local bg = 0
+    rect(7, 97, 121, 123, fg)
+    print(quote, 9, 99, fg)
 end
 
 function update_level()

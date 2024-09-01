@@ -3,9 +3,9 @@ version 42
 __lua__
 #include dynamic_level_objects.lua
 #include collision.lua
-#include effects.lua
 #include player.lua
 #include levels.lua
+#include effects_dialogue.lua
 #include main.lua
 __gfx__
 00000000033330000333300003333000000000000333300000000000000000000000000000000000000000000000000000000000000000000000000000000000

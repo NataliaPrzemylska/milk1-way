@@ -1,11 +1,15 @@
 --Milk1 Way
 STATE_MENU = 0
 STATE_GAME = 1
+STATE_DIALOGUE_START = 2 -- dialogue on the start
+STATE_DIALOGUE_END = 3 -- dialogue on the end
 FLASH_UNKNOWN = 0
 FLASH_ENABLED = 1
 FLASH_DISABLED = 2
 current_frame = 0
 frame = 0
+dialogue_frame = 0
+state = STATE_MENU
 function _init()
     mapX = 7
     mapY = 1
@@ -13,7 +17,6 @@ function _init()
     set_day(day)
     journey_days = 0
     debug = false
-    state = STATE_MENU
     temp_mapx = mapX
     temp_mapy = mapY
     exploded = 0
@@ -34,19 +37,21 @@ function _update()
             end
         else
             if (btnp(0) or btnp(1) or btnp(2) or btnp(3) or btnp(4) or btnp(5)) and frame>=10 then
-                state = STATE_GAME
+                state = STATE_DIALOGUE_START
                 mapX = 0
                 mapY = 0
                 frame = 0
             end
         end
+    elseif state == STATE_DIALOGUE_START then
+        update_start_dialogue()
     elseif state == STATE_GAME then
         for obj in all(current_objects) do
             if day == obj.day then
                 obj.update(obj);
             end
         end
-        if frame>=10 then
+        if frame>=10 and dialogue_frame == 0 then
             player_input()
         end
         update_level()
@@ -68,6 +73,10 @@ function _draw()
             rect(10, 32, 118, 92, 7)
             print("warning\nTHIS GAME CONTAINS\nFLASHING EFFECTS.\nPRESS x TO\n DISABLE FLASH\nPRESS z/O TO\n ENABLE FLASh", 20, 42, 7)
         end
+    elseif state == STATE_DIALOGUE_START then
+        draw_start_dialogue()
+        print(current_point, 20, 30, 7)
+        print(current_frame_of_animation)
     elseif state == STATE_GAME then
         adjust_platforms()
         cls(0)
