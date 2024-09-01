@@ -43,6 +43,9 @@ quote = levels[1].quote
 cow_location = nil
 
 function change_level(right) 
+    if level_index == 4 then
+        music(-1)
+    end
     local old_level_info = levels[level_index]
     if (right==false) and (old_level_info.left_lvl==1) then
         state = STATE_DIALOGUE_END
