@@ -1,6 +1,7 @@
 
 function update_car(c)
     if (player.x<=c.x+16 and player.x>=c.x-8) and (player.y<=c.y+8 and player.y>=c.y-8) then
+        sfx_boom()
         dead()
     end
     if c.spd != nil then

@@ -93,8 +93,14 @@ function player_input()
     -- flip day and night
     if input.flip and (not old_input.flip) then
         if start_day_change() then
+            if day then
+                music_change_to_night()
+            else
+                music_change_to_day()
+            end
             journey_days += 0.5
             adjust_platforms()
+            
         end
     end
 
@@ -120,6 +126,11 @@ function player_input()
 
     if is_on_ground and input.jump and player.dead_animation_index == 0 then -- if the player isn't dead
         player.vy = -player.jump_spd
+        if day then
+            sfx_jump_day()
+        else
+            sfx_jump_night()
+        end
     end
 
     if debug then
@@ -192,6 +203,7 @@ function respawn()
 end
 function dead()
     if player.dead_animation_index==0 then
+        sfx_death()
         if epic_animation_frame == 0 then
             epic_animation_frame = 1
         end
