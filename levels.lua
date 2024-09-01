@@ -19,7 +19,7 @@ levels[4] = { left_lvl=3, right_lvl=10 , mapX=3, mapY=0,
     quote="back in my days\nwe milked the cows ourselves",
     cow_location={x=64, y=49, width=8, height=8}}
 
-levels[5] = { left_lvl=6, right_lvl=nil, mapX=4, mapY=0,
+levels[5] = { left_lvl=6, right_lvl=4, mapX=4, mapY=0,
     spawn_left={x=1, y=80}, spawn_right={x=110, y=16},
     quote="back in my days\nwe had to fight orcs\nto survive"}
 
@@ -100,13 +100,11 @@ function get_milk()
     fset(106,1,false)
     fset(122,1,false)
 
-    levels[1].spawn_right = 5
+    levels[4].left_lvl = 5
+    levels[1].right_lvl = 9
 
-    levels[4].quote = "back in my days\nwe milked the cows ourselves"
     levels[1].quote = "and this is how i got\nthe fresh milk for us"
     quote = levels[level_index].quote
-
-    levels[4].left_lvl = 5
 
     --mset(8, 3, 66)
 
