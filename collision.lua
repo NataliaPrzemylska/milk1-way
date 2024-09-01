@@ -56,6 +56,7 @@ function check_sprite(s, sx, sy)
         player.has_egg = true
         mset(sx,sy,254)
         sfx_jump_night()
+        final_dialogue = {"why?...", "why, oh my why...", "you were away for", "", "and you also","brought","eggs", "Im amazed!"}
     elseif s == 34 then -- hole
         --dead()
     elseif s >= 39 and s <= 44 then --orc

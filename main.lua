@@ -92,7 +92,7 @@ function _draw()
         if flash == FLASH_UNKNOWN then
             rectfill(10, 32, 118, 92, 0)
             rect(10, 32, 118, 92, 7)
-            print("warning\nTHIS GAME CONTAINS\nFLASHING EFFECTS.\nPRESS x TO\n DISABLE FLASH\nPRESS z/O TO\n ENABLE FLASh", 20, 42, 7)
+            print("warning\nthis game contains\nflashing effects.\npress x to\n disable flash\npress z / o to\n enable flash", 20, 42, 7)
         end
     elseif state == STATE_DIALOGUE_START then
         draw_start_dialogue()
