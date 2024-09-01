@@ -32,7 +32,11 @@ levels[7] = { left_lvl=8, right_lvl=6, mapX=6, mapY=0,
     quote="and the hills\nwere *really* tall"}
 
 levels[8] = { left_lvl=9, right_lvl=7, mapX=7, mapY=0,
-    spawn_left={x=1, y=80}, spawn_right={x=118, y=72},
+    spawn_left={x=1, y=80}, spawn_right={x=118, y=80},
+    quote="and the hills\nwere *really* tall"}
+
+levels[9] = { left_lvl=9, right_lvl=7, mapX=0, mapY=1,
+    spawn_left={x=1, y=80}, spawn_right={x=118, y=80},
     quote="and the hills\nwere *really* tall"}
 
 mapX = levels[1].mapX

@@ -45,7 +45,7 @@ function _draw()
         draw_level()
         draw_background()
         -- draw a screen of tiles in map
-        map(mapX*16, mapY*16, 0, 0, 16, 16)
+        map(mapX*16, mapY*16, 0, 0, 16, 12)
 
         draw_player()
 
