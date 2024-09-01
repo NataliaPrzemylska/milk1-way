@@ -11,7 +11,7 @@ current_frame_of_animation = 0 --number of frames that passed since last change 
 current_point = 1 -- shown dialogue
 start_dialogue = {"my dear,", "do NOT come back", "without milk"}
 function update_start_dialogue()
-    if (current_point == 1) and (current_frame_of_animation<=10) then 
+    if (current_point == 1) and (current_frame_of_animation<=5) then 
         return
     end
     if current_frame_of_animation >= #(start_dialogue[current_point]) then
@@ -37,6 +37,6 @@ function draw_start_dialogue()
     
     draw_player()
     adjust_platforms()
-    print(start_dialogue[current_point], 50, 30, 6)
+    print(start_dialogue[current_point], 40, 50, 6)
     current_frame_of_animation +=1
 end
