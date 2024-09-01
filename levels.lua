@@ -33,7 +33,7 @@ levels[7] = { left_lvl=8, right_lvl=6, mapX=6, mapY=0,
 
 levels[8] = { left_lvl=9, right_lvl=7, mapX=7, mapY=0,
     spawn_left={x=1, y=32}, spawn_right={x=118, y=80},
-    quote="back in my days\n"}
+    quote="back in my days\nwe commited sacrifices\nto impress our wifes"}
 
 levels[9] = { left_lvl=1, right_lvl=8, mapX=0, mapY=1,
     spawn_left={x=1, y=80}, spawn_right={x=118, y=24},
