@@ -3,7 +3,6 @@ version 42
 __lua__
 #include dynamic_level_objects.lua
 #include collision.lua
-#include effects.lua
 #include player.lua
 #include levels.lua
 #include effects_dialogue.lua
