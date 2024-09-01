@@ -25,7 +25,9 @@ end
 
 function _update()
     if state == STATE_MENU then
-        
+        if stat(46) < 0 and stat(48) < 0 then
+            main_menu_music()
+        end
 
         if flash == FLASH_UNKNOWN then
             if btnp(4) then
@@ -43,16 +45,21 @@ function _update()
                 mapX = 0
                 mapY = 0
                 frame = 0
+                music(-1)
             end
         end
     elseif state == STATE_DIALOGUE_START then
         update_start_dialogue()
     elseif state == STATE_GAME then
         if stat(46) < 0 and stat(48) < 0 then
-            if day then
-                music_day()
+            if level_index != 4  then
+                if day then
+                    music_day()
+                else
+                    music_night()
+                end
             else
-                music_night()
+                cow_music()
             end
         end
 

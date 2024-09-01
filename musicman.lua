@@ -33,3 +33,13 @@ end
 function sfx_boom()
     music(0, 0, 3)
 end
+
+function main_menu_music()
+    music(-1)
+    music(30, 0, 1)
+end
+
+function cow_music()
+    music(-1)
+    music(38)
+end
