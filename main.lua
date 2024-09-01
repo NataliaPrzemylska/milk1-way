@@ -16,7 +16,7 @@ function _init()
     day = true
     set_day(day)
     journey_days = 0
-    debug = false
+    debug = true
     temp_mapx = mapX
     temp_mapy = mapY
     exploded = 0
@@ -25,6 +25,8 @@ end
 
 function _update()
     if state == STATE_MENU then
+        
+
         if flash == FLASH_UNKNOWN then
             if btnp(4) then
                 flash = FLASH_ENABLED  
@@ -46,6 +48,14 @@ function _update()
     elseif state == STATE_DIALOGUE_START then
         update_start_dialogue()
     elseif state == STATE_GAME then
+        if stat(46) < 0 and stat(48) < 0 then
+            if day then
+                music_day()
+            else
+                music_night()
+            end
+        end
+
         for obj in all(current_objects) do
             if day == obj.day then
                 obj.update(obj);
@@ -105,8 +115,10 @@ function _draw()
 
         --debug
         if debug then
-            print(player.x,10,0)
-            print(player.y)
+            print(player.x,0,10,7)
+            print(player.y,0,20,7)
+            print(stat(46),0,30,7)
+            print(stat(48),0,30,7)
             
         end
     end
