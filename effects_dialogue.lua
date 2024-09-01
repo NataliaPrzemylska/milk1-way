@@ -71,6 +71,7 @@ function draw_final_dialogue()
     map(mapX*16, mapY*16, 0, 0, 16, 12)
     
     --draw_player()
+    mset(14, 8, 10)
     adjust_platforms()
     print(final_dialogue[current_point], 40, 50, 6)
     current_frame_of_animation +=1

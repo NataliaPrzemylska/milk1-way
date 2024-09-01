@@ -88,7 +88,7 @@ function get_milk()
     levels[1].quote = "and this is how i got\nthe fresh milk for us"
     quote = levels[level_index].quote
 
-    levels[4].left_lvl = 5
+    levels[4].left_lvl = 1
 
     --mset(8, 3, 66)
 
