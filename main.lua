@@ -60,7 +60,8 @@ function _draw()
     if state == STATE_MENU then
         cls(0)
         --draw_background()
-        map(mapX*16, mapY*16, 0, 0, 16, 16)
+        map(16, 12, 0, 0, 16, 16)
+        spr(32, 11, 72, 2, 1)
         print("milk1 way", 20, 30)
         if flash == FLASH_UNKNOWN then
             rectfill(10, 32, 118, 92, 0)
