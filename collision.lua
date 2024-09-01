@@ -61,7 +61,7 @@ function check_sprite(s, sx, sy)
         mset(sx, sy, 254)
         player.has_key = true
 
-    elseif s == 150 then --door
+    elseif s == 150 and player.has_key then --door
         mset(sx,sy,134)
         player.has_key = false
 
