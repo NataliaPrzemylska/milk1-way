@@ -62,7 +62,7 @@ function _update()
                 cow_music()
             end
         end
-
+ 
         for obj in all(current_objects) do
             if day == obj.day then
                 obj.update(obj);
