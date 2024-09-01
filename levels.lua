@@ -12,32 +12,40 @@ levels[2] = { left_lvl=1, right_lvl=3, mapX=1, mapY=0,
 
 levels[3] = { left_lvl=2, right_lvl=4, mapX=2, mapY=0,
     spawn_left={x=1, y=80}, spawn_right={x=120, y=16},
-    quote="and the hills\nwere *really* tall"}
+    quote="back in my days\nwe had to do parkour\non our way to school"}
 
 levels[4] = { left_lvl=3, right_lvl=nil , mapX=3, mapY=0,
     spawn_left={x=1, y=16}, spawn_right=nil,
-    quote="but I finally found the cow",
+    quote="back in my days\nwe milked the cows ourselves",
     cow_location={x=64, y=49, width=8, height=8}}
 
 levels[5] = { left_lvl=6, right_lvl=nil, mapX=4, mapY=0,
     spawn_left={x=1, y=80}, spawn_right={x=110, y=16},
-    quote="and the hills\nwere *really* tall"}
+    quote="back in my days\nwe had to fight orcs\nto survive"}
 
 levels[6] = { left_lvl=7, right_lvl=5, mapX=5, mapY=0,
     spawn_left={x=1, y=30}, spawn_right={x=118, y=80},
-    quote="and the hills\nwere *really* tall"}
+    quote="back in my days\nwe had to have keys\nto keep going"}
 
 levels[7] = { left_lvl=8, right_lvl=6, mapX=6, mapY=0,
     spawn_left={x=1, y=72}, spawn_right={x=118, y=30},
-    quote="and the hills\nwere *really* tall"}
+    quote="back in my days\nwe had to venture deep\n into the caves"}
 
 levels[8] = { left_lvl=9, right_lvl=7, mapX=7, mapY=0,
-    spawn_left={x=1, y=80}, spawn_right={x=118, y=80},
-    quote="and the hills\nwere *really* tall"}
+    spawn_left={x=1, y=80}, spawn_right={x=118, y=72},
+    quote="back in my days\n"}
 
 levels[9] = { left_lvl=1, right_lvl=8, mapX=0, mapY=1,
     spawn_left={x=1, y=80}, spawn_right={x=118, y=16},
     quote="and the hills\nwere *really* tall"}
+
+if state == STATE_MENU then
+    mapX = 7
+    mapY = 1
+else
+    mapX = levels[1].mapX
+    mapY = levels[1].mapY
+end
 
 mapX = levels[1].mapX
 mapY = levels[1].mapY

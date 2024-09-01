@@ -192,6 +192,9 @@ function respawn()
 end
 function dead()
     if player.dead_animation_index==0 then
+        if epic_animation_frame == 0 then
+            epic_animation_frame = 1
+        end
         player.dead_animation_index = 1
     end
 end
