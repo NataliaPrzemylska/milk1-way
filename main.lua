@@ -3,6 +3,7 @@ STATE_MENU = 0
 STATE_GAME = 1
 STATE_DIALOGUE_START = 2 -- dialogue on the start
 STATE_DIALOGUE_END = 3 -- dialogue on the end
+STATE_CREDITS = 4
 FLASH_UNKNOWN = 0
 FLASH_ENABLED = 1
 FLASH_DISABLED = 2
@@ -10,13 +11,13 @@ current_frame = 0
 frame = 0
 dialogue_frame = 0
 state = STATE_MENU
+journey_days = 0
 function _init()
     mapX = 7
     mapY = 1
     day = true
     set_day(day)
-    journey_days = 0
-    debug = true
+    debug = false
     temp_mapx = mapX
     temp_mapy = mapY
     exploded = 0
@@ -50,6 +51,8 @@ function _update()
         end
     elseif state == STATE_DIALOGUE_START then
         update_start_dialogue()
+    elseif state == STATE_DIALOGUE_END then
+        update_final_dialogue()
     elseif state == STATE_GAME then
         if stat(46) < 0 and stat(48) < 0 then
             if level_index != 4  then
@@ -92,8 +95,11 @@ function _draw()
         end
     elseif state == STATE_DIALOGUE_START then
         draw_start_dialogue()
-        print(current_point, 20, 30, 7)
-        print(current_frame_of_animation)
+    elseif state == STATE_DIALOGUE_END then
+        draw_final_dialogue()
+    elseif state == STATE_CREDITS then
+        cls(0)
+        print("the end\njaram sie \njak konopia na jamajce", 30, 40, 7)
     elseif state == STATE_GAME then
         adjust_platforms()
         cls(0)
