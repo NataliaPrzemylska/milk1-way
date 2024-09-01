@@ -10,6 +10,7 @@ player = {
     face_right = true,
     has_milk = false,
     has_key = false,
+    has_egg = false,
     current_sprite = 0,
     animation_index = 1,
     dead_animation_index = 0,
@@ -71,6 +72,10 @@ function draw_player()
 
     if player.has_milk then
         spr(8, player.x + 0.5, player.y + 0.5 - 10)
+    end
+
+    if player.has_egg then
+        spr(10, player.x + 0.5, player.y + 0.5 - 10 - 9)
     end
 end
 

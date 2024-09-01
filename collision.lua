@@ -52,7 +52,11 @@ function player_overlap(x, y, width, height)
 end
 
 function check_sprite(s, sx, sy)
-    if s == 34 then -- hole
+    if s == 10 then
+        player.has_egg = true
+        mset(sx,sy,254)
+        sfx_jump_night()
+    elseif s == 34 then -- hole
         --dead()
     elseif s >= 39 and s <= 44 then --orc
         dead()

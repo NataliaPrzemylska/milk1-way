@@ -14,8 +14,8 @@ levels[3] = { left_lvl=2, right_lvl=4, mapX=2, mapY=0,
     spawn_left={x=1, y=80}, spawn_right={x=120, y=16},
     quote="back in my days\nwe had to do parkour\non our way to school"}
 
-levels[4] = { left_lvl=3, right_lvl=nil , mapX=3, mapY=0,
-    spawn_left={x=1, y=16}, spawn_right=nil,
+levels[4] = { left_lvl=3, right_lvl=10 , mapX=3, mapY=0,
+    spawn_left={x=1, y=16}, spawn_right={x=120,y=56},
     quote="back in my days\nwe milked the cows ourselves",
     cow_location={x=64, y=49, width=8, height=8}}
 
@@ -38,6 +38,12 @@ levels[8] = { left_lvl=9, right_lvl=7, mapX=7, mapY=0,
 levels[9] = { left_lvl=1, right_lvl=8, mapX=0, mapY=1,
     spawn_left={x=1, y=80}, spawn_right={x=118, y=24},
     quote="and the hills\nwere *really* tall"}
+
+--secret level
+levels[10] = { left_lvl=4, right_lvl=nil, mapX=2, mapY=1,
+    spawn_left={x=1, y=48}, spawn_right={x=118, y=24},
+    quote="and we even brought\nadditional things\nwithout being asked"}
+-----
 
 quote = levels[1].quote
 cow_location = nil
@@ -90,6 +96,9 @@ end
 function get_milk()
     player.has_milk = true
     sfx_jump_day()
+
+    fset(106,1,false)
+    fset(122,1,false)
 
     levels[1].spawn_right = 5
 
