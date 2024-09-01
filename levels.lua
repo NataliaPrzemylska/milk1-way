@@ -54,6 +54,11 @@ function change_level(right)
         level_index = old_level_info.left_lvl
     end
 
+    if level_index == 4 then
+        music(-1)
+        music(38, 0, 2)
+    end
+
     local level_info =levels[level_index]
     mapX = level_info.mapX
     mapY = level_info.mapY
@@ -81,6 +86,7 @@ end
 -- reconfigure the game for >>>comeback<<<
 function get_milk()
     player.has_milk = true
+    sfx_jump_day()
 
     levels[1].spawn_right = 5
 
