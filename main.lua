@@ -99,7 +99,7 @@ function _draw()
         draw_final_dialogue()
     elseif state == STATE_CREDITS then
         cls(0)
-        print("the end\njaram sie \njak konopia na jamajce", 30, 40, 7)
+        print("the end\n\n\nmade by:\n rezlfiction\n wolfie\n natsue\n pilot", 30, 40, 7)
     elseif state == STATE_GAME then
         adjust_platforms()
         cls(0)
