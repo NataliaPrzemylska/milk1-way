@@ -63,7 +63,6 @@ function _draw()
         --debug
         print(player.x,10,0)
         print(player.y)
-        print(#current_objects)
-        print(exploded)
+        print(player.has_key)
     end
 end

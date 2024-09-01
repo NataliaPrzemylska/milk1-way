@@ -35,8 +35,8 @@ levels[8] = { left_lvl=9, right_lvl=7, mapX=7, mapY=0,
     spawn_left={x=1, y=80}, spawn_right={x=118, y=80},
     quote="and the hills\nwere *really* tall"}
 
-levels[9] = { left_lvl=9, right_lvl=7, mapX=0, mapY=1,
-    spawn_left={x=1, y=80}, spawn_right={x=118, y=80},
+levels[9] = { left_lvl=1, right_lvl=8, mapX=0, mapY=1,
+    spawn_left={x=1, y=80}, spawn_right={x=118, y=16},
     quote="and the hills\nwere *really* tall"}
 
 mapX = levels[1].mapX
@@ -74,6 +74,8 @@ end
 -- reconfigure the game for >>>comeback<<<
 function get_milk()
     player.has_milk = true
+
+    levels[1].spawn_right = 9
 
     levels[4].quote = "back in my days\nwe milked the cows ourselves"
     levels[1].quote = "and this is how i got\nthe fresh milk for us"
