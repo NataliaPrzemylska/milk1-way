@@ -1,16 +1,28 @@
 # Milk Journey
 
 [slavic game jam 2024](https://slavicgamejam.org) submission!
-Game snapshots
 
 ![game_snapshot1](screenshots/ss1res.png)
-![game_snapshot2](screenshots/ss2res.png)
+![game_snapshot2](screenshots/ss4res.png)
 ![game_snapshot3](screenshots/ss3res.png)
-![game_snapshot4](screenshots/ss4res.png)
+![game_snapshot4](screenshots/ss2res.png)
 
-# [play here](https://realfiction.itch.io/milk1-way)
+# \>\>\>[play here](https://realfiction.itch.io/milk1-way)<<<
+<br/>
 
-## Sprites
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+## info for development
+
+### Sprites
 
 - Page 3 for placeholders
 
