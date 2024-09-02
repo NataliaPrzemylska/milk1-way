@@ -1,4 +1,9 @@
 # Milk Journey
+Game snapshots
+![game_snapshot1](screenshots/ss1res.png)
+![game_snapshot2](screenshots/ss2res.png)
+![game_snapshot3](screenshots/ss3res.png)
+![game_snapshot4](screenshots/ss4res.png)
 
 slavic game jam 2024
 
