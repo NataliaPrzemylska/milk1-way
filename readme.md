@@ -1,4 +1,4 @@
-# Milk Journey
+# Milk1 way
 
 [slavic game jam 2024](https://slavicgamejam.org) submission!
 
