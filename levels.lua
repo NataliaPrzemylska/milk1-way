@@ -20,7 +20,7 @@ levels[4] = { left_lvl=3, right_lvl=10 , mapX=3, mapY=0,
     cow_location={x=64, y=49, width=8, height=8}}
 
 levels[5] = { left_lvl=6, right_lvl=4, mapX=4, mapY=0,
-    spawn_left={x=1, y=80}, spawn_right={x=110, y=16},
+    spawn_left={x=1, y=80}, spawn_right={x=118, y=16},
     quote="back in my days\nwe had to fight orcs\nto survive"}
 
 levels[6] = { left_lvl=7, right_lvl=5, mapX=5, mapY=0,
